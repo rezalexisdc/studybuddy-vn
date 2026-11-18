@@ -243,8 +243,10 @@ h1, h2 { line-height: 1.15; letter-spacing: -0.02em; margin: 0; }
 
 @media (min-width: 900px) {
   .subjects { grid-template-columns: minmax(280px, 1fr) 3fr; gap: 40px; }
-  .tiles-core { grid-template-columns: 1fr; }
-  .tiles { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+  /* 9 electives = a full 3x3 block; the 2 core tiles stretch to the same height. */
+  .tiles { grid-template-columns: repeat(3, 1fr); }
+  .tiles-core { grid-template-columns: 1fr; grid-template-rows: 1fr 1fr; height: calc(100% - 2.6rem); }
+  .group { display: flex; flex-direction: column; }
 }
 
 /* ---------- subject page ---------- */
