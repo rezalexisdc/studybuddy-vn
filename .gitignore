@@ -1,0 +1,26 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Environment variables / secrets (back these up in Google Drive, never in git)
+.env
+.env.local
+.env.*.local
+firebase-service-account.json
+
+# Editor / OS
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.sw?
+
+# Google Drive for desktop temp folders (if this folder is ever synced)
+.tmp.driveupload
+.tmp.drivedownload

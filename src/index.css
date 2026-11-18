@@ -1,0 +1,310 @@
+/* StudyBuddy.vn: the look is a Vietnamese "vở ô li" school notebook.
+   Pale blue grid paper, a red margin line, and "mực tím" violet ink. */
+:root {
+  --paper: #fbfcff;
+  --grid-fine: #e6ecf7;
+  --grid-bold: #c9d5ec;
+  --ink: #4b2fa8;        /* mực tím: primary buttons, links, headings */
+  --ink-deep: #1b1640;   /* body text */
+  --margin-red: #e0484b; /* the notebook margin line; also errors */
+  --highlight: #ffe45c;  /* highlighter: rewards and focus, fills only, never text */
+  --muted: #5b5878;
+  --surface: #ffffff;
+  --border: #dcdff0;
+
+  --font: "Be Vietnam Pro", system-ui, sans-serif;
+  --step--1: 0.875rem;
+  --step-0: 1rem;
+  --step-1: 1.25rem;
+  --step-2: 1.6rem;
+  --step-3: clamp(2rem, 1.2rem + 3.4vw, 3.6rem);
+  --gutter: 16px;
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #12142a;
+    --grid-fine: #1b1e38;
+    --grid-bold: #262a4a;
+    --ink: #b3a3ff;
+    --ink-deep: #eceaff;
+    --margin-red: #ff6b6e;
+    --muted: #a6a3c4;
+    --surface: #181b34;
+    --border: #2c3052;
+    color-scheme: dark;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  font-size: var(--step-0);
+  line-height: 1.6;
+  color: var(--ink-deep);
+  background: var(--paper);
+  min-height: 100dvh;
+}
+
+a { color: var(--ink); }
+
+:focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+h1, h2 { line-height: 1.15; letter-spacing: -0.02em; margin: 0; }
+
+/* Grid paper: 4 fine ruled lines inside every bold square, like vở ô li. */
+.paper {
+  background-color: var(--surface);
+  background-image:
+    linear-gradient(var(--grid-bold) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-bold) 1px, transparent 1px),
+    linear-gradient(var(--grid-fine) 1px, transparent 1px);
+  background-size: 32px 32px, 32px 32px, 8px 8px;
+}
+
+/* ---------- header ---------- */
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px var(--gutter);
+  padding-top: max(12px, env(safe-area-inset-top));
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+  font-size: var(--step-1);
+  color: var(--ink-deep);
+  text-decoration: none;
+}
+
+.brand-tld { color: var(--ink); }
+
+.page {
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 0 var(--gutter) 64px;
+}
+
+/* ---------- buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 20px;
+  border-radius: 999px;
+  font: 600 var(--step-0) / 1 var(--font);
+  text-decoration: none;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: transform 120ms ease;
+}
+
+.btn:active { transform: scale(0.97); }
+
+.btn-ink { background: var(--ink); color: #fff; }
+@media (prefers-color-scheme: dark) { .btn-ink { color: #12142a; } }
+
+.btn-quiet {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--border);
+  font-size: var(--step--1);
+  min-height: 40px;
+  padding: 0 14px;
+}
+
+/* ---------- hero ---------- */
+.hero {
+  position: relative;
+  display: grid;
+  gap: 24px;
+  padding: 40px 20px 40px 44px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+/* the red margin line down the left of the page */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 28px;
+  width: 2px;
+  background: var(--margin-red);
+}
+
+.hero h1 {
+  font-size: var(--step-3);
+  font-weight: 800;
+  color: var(--ink);
+  max-width: 16ch;
+}
+
+.lede {
+  font-size: var(--step-1);
+  color: var(--ink-deep);
+  max-width: 46ch;
+  margin: 16px 0 24px;
+}
+
+.hero-note {
+  align-self: end;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 6px solid var(--highlight);
+  border-radius: 12px;
+  padding: 16px 18px;
+  font-size: var(--step--1);
+  max-width: 36ch;
+}
+
+.hero-note p { margin: 0 0 6px; }
+.hero-note p:last-child { margin: 0; }
+.note-title { font-weight: 700; font-size: var(--step-0); }
+
+@media (min-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    padding: 72px 56px 64px 88px;
+  }
+  .hero::before { left: 56px; }
+}
+
+/* ---------- subject tiles ---------- */
+.subjects {
+  display: grid;
+  gap: 32px;
+  margin-top: 40px;
+  scroll-margin-top: 16px;
+}
+
+.group h2 {
+  font-size: var(--step-1);
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.tiles {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 12px;
+}
+
+.tiles-core { grid-template-columns: repeat(2, 1fr); }
+
+/* A tile is a notebook: a coloured cover tab on the left edge. */
+.tile {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 8px;
+  min-height: 112px;
+  height: 100%;
+  padding: 16px 16px 14px 26px;
+  border-radius: 6px 14px 14px 6px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: inset 10px 0 0 var(--cover);
+  color: var(--ink-deep);
+  text-decoration: none;
+}
+
+.tile:hover { border-color: var(--cover); }
+
+.tile-vi { font-weight: 700; font-size: var(--step-1); line-height: 1.25; }
+.tile-en { color: var(--muted); font-size: var(--step--1); margin: 0; }
+
+.tiles-core .tile { min-height: 150px; }
+.tiles-core .tile-vi { font-size: var(--step-2); }
+
+@media (min-width: 900px) {
+  .subjects { grid-template-columns: minmax(280px, 1fr) 3fr; gap: 40px; }
+  .tiles-core { grid-template-columns: 1fr; }
+  .tiles { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+}
+
+/* ---------- subject page ---------- */
+.subject { padding-top: 16px; }
+
+.back {
+  display: inline-block;
+  font-size: var(--step--1);
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.subject h1 {
+  font-size: var(--step-3);
+  color: var(--cover);
+  font-weight: 800;
+}
+
+@media (prefers-color-scheme: dark) {
+  .subject h1 { color: var(--ink-deep); }
+}
+
+.grades {
+  display: flex;
+  gap: 8px;
+  margin: 24px 0 16px;
+  overflow-x: auto;
+}
+
+.grade {
+  min-height: 44px;
+  padding: 0 18px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--ink-deep);
+  font: 600 var(--step-0) / 1 var(--font);
+  cursor: pointer;
+}
+
+.grade[aria-selected="true"] {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: #fff;
+}
+@media (prefers-color-scheme: dark) { .grade[aria-selected="true"] { color: #12142a; } }
+
+.empty {
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 40px 24px;
+  display: grid;
+  justify-items: start;
+  gap: 4px;
+}
+
+.empty h1 { font-size: var(--step-2); }
+.empty p { margin: 0; font-size: var(--step-1); font-weight: 600; }
+.empty .muted { font-size: var(--step-0); font-weight: 400; color: var(--muted); margin-bottom: 16px; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}

@@ -1,0 +1,13 @@
+{
+  "name": "StudyBuddy.vn",
+  "short_name": "StudyBuddy",
+  "description": "Học tất cả các môn THPT, ôn thi tốt nghiệp.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#fbfcff",
+  "theme_color": "#4b2fa8",
+  "lang": "vi",
+  "icons": [{ "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
+}
