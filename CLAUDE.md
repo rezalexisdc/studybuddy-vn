@@ -44,7 +44,11 @@ Each subject has a notebook-cover colour (`cover` in `subjects.js`). Dark theme 
 ## Status / next steps
 - [x] Project scaffolded, runs locally (`npm run dev`).
 - [ ] GitHub repo `rezalexisdc/studybuddy-vn` (private) + first push.
-- [ ] Firebase project (Google sign-in, Firestore), fill in `.env.local`, add the same vars in Vercel.
+- [x] Firebase project `studybuddy-vn-3d8b0` (display name studybuddy-vn): Google sign-in enabled, Firestore
+      (default) database created, `.env.local` filled in. Firestore rules are still the production-mode default
+      (deny all), so write real rules before saving any data.
+- [ ] Add the same `VITE_FIREBASE_*` vars in Vercel; add `studybuddy.vn` + `www.studybuddy.vn` to Firebase
+      Authentication → Settings → Authorized domains.
 - [ ] Vercel project linked to the repo, then the domain: add `studybuddy.vn` in Vercel, set the DNS records
       in Tenten's DNS panel (A record `@` → Vercel's IP, CNAME `www` → Vercel's target, as Vercel shows them).
 - [ ] Real logo + PNG PWA icons (192/512/maskable).
