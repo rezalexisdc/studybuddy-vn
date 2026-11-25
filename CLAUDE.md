@@ -43,7 +43,7 @@ Each subject has a notebook-cover colour (`cover` in `subjects.js`). Dark theme 
 
 ## Status / next steps
 - [x] Project scaffolded, runs locally (`npm run dev`).
-- [ ] GitHub repo `rezalexisdc/studybuddy-vn` (private) + first push.
+- [x] GitHub repo `rezalexisdc/studybuddy-vn` (private), `main` pushed (remote `origin`).
 - [x] Firebase project `studybuddy-vn-3d8b0` (display name studybuddy-vn): Google sign-in enabled, Firestore
       (default) database created, `.env.local` filled in. Firestore rules are still the production-mode default
       (deny all), so write real rules before saving any data.
