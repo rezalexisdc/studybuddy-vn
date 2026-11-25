@@ -47,9 +47,11 @@ Each subject has a notebook-cover colour (`cover` in `subjects.js`). Dark theme 
 - [x] Firebase project `studybuddy-vn-3d8b0` (display name studybuddy-vn): Google sign-in enabled, Firestore
       (default) database created, `.env.local` filled in. Firestore rules are still the production-mode default
       (deny all), so write real rules before saving any data.
-- [ ] Add the same `VITE_FIREBASE_*` vars in Vercel; add `studybuddy.vn` + `www.studybuddy.vn` to Firebase
-      Authentication → Settings → Authorized domains.
-- [ ] Vercel project linked to the repo, then the domain: add `studybuddy.vn` in Vercel, set the DNS records
-      in Tenten's DNS panel (A record `@` → Vercel's IP, CNAME `www` → Vercel's target, as Vercel shows them).
+- [x] Vercel project `studybuddy-vn` (team EnglishTalkVn), imported from GitHub, `VITE_FIREBASE_*` vars set.
+      Live at https://studybuddy-vn-ommk.vercel.app (every push to `main` deploys).
+- [ ] Domain: add `studybuddy.vn` + `www` in Vercel, set the DNS records in Tenten's DNS panel (A record `@` →
+      Vercel's IP, CNAME `www` → Vercel's target, as Vercel shows them).
+- [ ] Firebase Authentication → Settings → Authorized domains: add `studybuddy-vn-ommk.vercel.app`,
+      `studybuddy.vn`, `www.studybuddy.vn` (Google sign-in fails on a domain not listed).
 - [ ] Real logo + PNG PWA icons (192/512/maskable).
 - [ ] Content: lesson / practice / test format per subject and grade.
